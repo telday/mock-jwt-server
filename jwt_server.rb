@@ -41,7 +41,7 @@ class JwtServer < Sinatra::Base
           jwks: fetch_jwks
         )
       )
-    rescue Exception => e
+    rescue StandardError => e
       status(400)
       body(JSON.pretty_generate(error: e))
     end
@@ -51,6 +51,15 @@ class JwtServer < Sinatra::Base
     body = request.body.read.to_s
     requested_claims = body.empty? ? {} : JSON.parse(body)
     JWT.encode(claims.merge(requested_claims), key.keypair, 'RS256', { kid: key.kid })
+  end
+
+  get '/.well-known/openid-configuration' do
+    JSON.pretty_generate(
+      {
+        issuer: default_values[:iss],
+        jwks_uri: "#{request.base_url}/jwks"
+      }
+    )
   end
 
   private

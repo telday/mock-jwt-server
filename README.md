@@ -128,6 +128,23 @@ JWKS endpoint to use for verifying a JWT
 }
 ```
 
+### OIDC Well-Known Endpoint
+
+To support testing JWT validation in the OIDC context, this server includes support for an OIDC Provider discovery endpoint:
+
+`GET /.well-known/openid-configuration`
+
+**Response**
+
+```json
+{
+  "issuer": "jwt.conjur.cyberark.com",
+  "jwks_uri": "http://localhost:8088/jwks"
+}
+```
+
+*Note: this tool is not a full OIDC provider, just a means of validating an OIDC token.*
+
 ### Verify
 
 Used to verify a particular JWT against the JWKS endpoint. The decoded token is returned.

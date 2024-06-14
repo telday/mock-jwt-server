@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2024-06-14
+
+### Added
+
+- Adds support for `/.well-known/openid-configuration` endpoint to assist with OIDC
+  token validation.
+
 ## [0.2.0] - 2020-10-03
 
 ### Fixed
