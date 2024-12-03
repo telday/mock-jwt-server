@@ -81,7 +81,6 @@ class JwtServer < Sinatra::Base
 
   def default_values
     {
-      iss: ENV.fetch('ISSUER', 'jwt.conjur.cyberark.com'),
       aud: ENV.fetch('AUDIENCE', '238d4793-70de-4183-9707-48ed8ecd19d9'),
       sub: ENV.fetch('SUBJECT', '19016b73-3ffa-4b26-80d8-aa9287738677')
     }
